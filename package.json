@@ -2,8 +2,12 @@
   "name": "react-test",
   "version": "0.0.0",
   "description": "",
-  "main": "webpack.config.js",
+  "main": "server.js",
   "dependencies": {
+    "body-parser": "^1.4.3",
+    "express": "^4.4.5"
+  },
+  "devDependencies": {
     "babel-loader": "^6.2.0",
     "babel-plugin-add-module-exports": "^0.1.2",
     "babel-plugin-react-html-attrs": "^2.0.0",
@@ -21,10 +25,21 @@
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.1"
   },
-  "devDependencies": {},
   "scripts": {
-    "dev": "webpack-dev-server --content-base src --inline --hot"
+    "dev": "webpack-dev-server --content-base src --inline --hot",
+    "start": "node server.js"
   },
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "react",
+    "test",
+    "classroom"
+  ],
+  "author": "arfa",
+  "bugs": {
+    "url": "https://github.com/arfa/classroom_management/issues"
+  },
+  "homepage": "https://github.com/arfa/classroom_management",
+  "engines" : {
+    "node" : "0.12.x"
+  }
 }
