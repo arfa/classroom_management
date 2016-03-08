@@ -1,0 +1,13 @@
+{
+  "name": "Gestion de Classe Numerique",
+  "description": "un simple test",
+  "keywords": [ "react", "reactjs", "tutorial" ],
+  "repository": "https://github.com/arfa/classroom_management",
+  "logo": "https://facebook.github.io/react/img/logo.svg",
+  "website": "https://github.com/arfa/classroom_management",
+  "success_url": "/",
+  "env" : {
+    "BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-nodejs.git"
+  }
+}
+
