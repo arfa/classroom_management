@@ -51,13 +51,20 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.get('/api/students', function(req, res) {
+app.get('/api/students/:classroom', function(req, res) {
   fs.readFile(STUDENTS_FILE, function(err, data) {
     if (err) {
       console.error(err);
       process.exit(1);
     }
-    res.json(JSON.parse(data));
+    var filter = req.params.classroom;
+    var students = JSON.parse(data);
+
+    var response = students.filter(function(student){
+      return student.classroom === filter;
+    });
+
+    res.json(response);
   });
 });
 
@@ -73,6 +80,7 @@ app.post('/api/students', function(req, res) {
     // treat Date.now() as unique-enough for our purposes.
     var newStudents = {
       id: Date.now(),
+      //id: req.body.id,
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       birthday: req.body.birthday,
@@ -80,13 +88,88 @@ app.post('/api/students', function(req, res) {
       classroom: req.body.classroom,
       email: req.body.email
     };
-    students.push(newComment);
+    students.push(newStudents);
+
     fs.writeFile(STUDENTS_FILE, JSON.stringify(students, null, 4), function(err) {
       if (err) {
         console.error(err);
         process.exit(1);
       }
-      res.json(students);
+
+      var response = students.filter(function(student){
+        return student.classroom === req.body.classroom;
+      });
+      res.json(response);
+    });
+  });
+});
+
+app.put('/api/students/:classroom/:id', function(req, res) {
+  fs.readFile(STUDENTS_FILE, function(err, data) {
+    if (err) {
+      console.error(err);
+      process.exit(1);
+    }
+    var id = parseInt(req.params.id,10);
+    var classroom = req.params.classroom;
+    var students = JSON.parse(data);
+
+    var newStudents = {
+      id: id,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      birthday: req.body.birthday,
+      gender: req.body.gender,
+      classroom: req.body.classroom,
+      email: req.body.email
+    };
+
+    students.forEach(function(student, i){
+      if (student.id === id) {
+        students[i] = newStudents;
+      }
+    });
+
+    fs.writeFile(STUDENTS_FILE, JSON.stringify(students, null, 4), function(err) {
+      if (err) {
+        console.error(err);
+        process.exit(1);
+      }
+
+      var response = students.filter(function(student){
+        return student.classroom === classroom;
+      });
+
+      res.json(response);
+    });
+  });
+});
+
+app.delete('/api/students/:classroom/:id', function(req, res) {
+  fs.readFile(STUDENTS_FILE, function(err, data) {
+    if (err) {
+      console.error(err);
+      process.exit(1);
+    }
+    var id = req.params.id;
+    var classroom = req.params.classroom;
+    var students = JSON.parse(data);
+
+    var response = students.filter(function(student){
+      return student.id !== parseInt(id,10);
+    });
+
+    fs.writeFile(STUDENTS_FILE, JSON.stringify(response, null, 4), function(err) {
+      if (err) {
+        console.error(err);
+        process.exit(1);
+      }
+
+      response = response.filter(function(student){
+        return student.classroom === classroom;
+      });
+
+      res.json(response);
     });
   });
 });

@@ -4,13 +4,20 @@ import * as StudentActions from "../actions/StudentActions";
 import StudentStore from "../stores/StudentStore";
 
 export default class Filter extends React.Component {
+  constructor() {
+    super();
+    this.getFilter = this.getFilter.bind(this);
+    this.state = {
+      filter: StudentStore.getFilter(),
+    };
+  }
+
   filter(e){
     const filter = e.target.value.toLowerCase();
-    console.log(filter);
     StudentActions.reloadStudents(filter);
   }
 
-  /*componentWillMount() {
+  componentWillMount() {
     StudentStore.on("change", this.getFilter);
   }
 
@@ -19,10 +26,11 @@ export default class Filter extends React.Component {
   }
 
   getFilter() {
+    console.log("update filter")
     this.setState({
       filter: StudentStore.getFilter(),
     });
-  }*/
+  }
 
   render() {
     return (
@@ -31,7 +39,7 @@ export default class Filter extends React.Component {
           <legend>Choisir Une Classe:</legend>
           <div class="form-group">
             <div class="col-lg-12">
-              <select class="form-control" id="select" onChange={this.filter}>
+              <select class="form-control" id="select" onChange={this.filter} value={this.state.filter}>
                 <option value="a">A</option>
                 <option value="b">B</option>
               </select>

@@ -5,6 +5,7 @@ import StudentAddForm from "../components/StudentAddForm";
 import Students from "./Students";
 
 export default class Index extends React.Component {
+
   render() {
     return (
       <div class="row">
@@ -13,7 +14,7 @@ export default class Index extends React.Component {
           <StudentAddForm class="well"> </StudentAddForm>
         </div>
         <div class="col-lg-8">
-          <Students > </Students>
+          <Students history={this.props.history} > </Students>
         </div>
       </div>
     );

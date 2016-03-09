@@ -13,7 +13,7 @@ export default class Layout extends React.Component {
 
         <nav class="navbar navbar-default navbar-fixed-top">
           <div class="container">
-            <div class="navbar-header">
+            <div class="navbar-header hvr-grow">
               <IndexLink to="/" class="navbar-brand">Gestion de Classe Numérique</IndexLink>
             </div>
           </div>

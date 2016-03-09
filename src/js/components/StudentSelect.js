@@ -26,8 +26,8 @@ export default React.createClass({
       <div className={className}>
         <label htmlFor={this.props.name} class="col-lg-2 control-label">{this.props.title}</label>
         <div class="col-lg-10">
-          <select name={this.props.name} onChange={this.changeValue} value={this.getValue()} class="form-control">
-            <option></option>
+          <select name={this.props.name} onChange={this.changeValue} value={this.getValue()||""} disabled={this.props.disabled} class="form-control">
+            <option value=""></option>
             {options}
           </select>
         </div>

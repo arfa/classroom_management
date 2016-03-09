@@ -9,11 +9,8 @@ class StudentStore extends EventEmitter {
     this.students = [];
   }
 
-  createStudent(student) {
-    const id = Date.now();
-    const newStudent =  Object.assign({id}, student);
-
-    this.students.push(newStudent);
+  createStudent(students) {
+    this.students.push(student);
 
     this.emit("change");
   }
@@ -22,11 +19,13 @@ class StudentStore extends EventEmitter {
     return this.students;
   }
 
-  /*byClassroom(classroom) {
-    return this.students.filter((student) => {
-      return student.classroom === classroom;
+  byId(id) {
+    const result = this.students.filter( (student) => {
+      return student.id === parseInt(id,10);
     });
-  }*/
+
+    return result[0];
+  }
 
   getFilter() {
     return this.filter;
@@ -35,9 +34,21 @@ class StudentStore extends EventEmitter {
   handleActions(action) {
     switch(action.type) {
       case "CREATE_STUDENT": {
-        this.createStudent(action.student);
+        this.students = action.students;
+        this.filter = action.filter;
+        this.emit("change");
+      }
+      case "UPDATE_STUDENT": {
+        this.students = action.students;
+        this.filter = action.filter;
+        this.emit("change");
       }
       case "RECEIVE_STUDENTS": {
+        this.students = action.students;
+        this.filter = action.filter;
+        this.emit("change");
+      }
+      case "DELETE_STUDENT": {
         this.students = action.students;
         this.filter = action.filter;
         this.emit("change");

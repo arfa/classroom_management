@@ -11,7 +11,7 @@ export default React.createClass({
   changeValue: function (event) {
     this.setValue(event.currentTarget[this.props.type === 'checkbox' ? 'checked' : 'value']);
   },
-  
+
   render: function () {
 
     // Set a specific className based on the validation
@@ -36,7 +36,8 @@ export default React.createClass({
             placeholder={this.props.title}
             onChange={this.changeValue}
             value={this.getValue()}
-            checked={this.props.type === 'checkbox' && this.getValue() ? 'checked' : null} />
+            checked={this.props.type === 'checkbox' && this.getValue() ? 'checked' : null}
+            disabled={this.props.disabled} />
           <span>{errorMessage}</span>
         </div>
       </div>
