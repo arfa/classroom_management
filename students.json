@@ -9,24 +9,6 @@
         "email": "vanessaestrada@exposa.com"
     },
     {
-        "id": 13464614,
-        "firstname": "Martina",
-        "lastname": "Lucas",
-        "birthday": "1994-12-11",
-        "gender": "Femme",
-        "classroom": "b",
-        "email": "martinalucas@exposa.com"
-    },
-    {
-        "id": 13464615,
-        "firstname": "Trina",
-        "lastname": "Hopper",
-        "birthday": "1995-07-26",
-        "gender": "Femme",
-        "classroom": "b",
-        "email": "trinahopper@exposa.com"
-    },
-    {
         "id": 13464616,
         "firstname": "Salinas",
         "lastname": "Buckner",
@@ -54,15 +36,6 @@
         "email": "tamikajefferson@exposa.com"
     },
     {
-        "id": 13464619,
-        "firstname": "Katie",
-        "lastname": "Blair",
-        "birthday": "1993-09-07",
-        "gender": "Femme",
-        "classroom": "b",
-        "email": "katieblair@exposa.com"
-    },
-    {
         "id": 13464620,
         "firstname": "Ellen",
         "lastname": "Pratt",
@@ -79,15 +52,6 @@
         "gender": "Femme",
         "classroom": "a",
         "email": "hildaparrish@exposa.com"
-    },
-    {
-        "id": 13464622,
-        "firstname": "Glover",
-        "lastname": "Decker",
-        "birthday": "1995-11-17",
-        "gender": "Femme",
-        "classroom": "b",
-        "email": "gloverdecker@exposa.com"
     },
     {
         "id": 13464623,
