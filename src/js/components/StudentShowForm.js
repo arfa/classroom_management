@@ -16,7 +16,7 @@ export default React.createClass({
     },
 
     backHome: function () {
-      this.props.history.push("/");
+      this.props.history.goBack();
     },
 
     render: function () {
